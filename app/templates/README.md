@@ -5,8 +5,6 @@
 [![npm Downloads][downloads-image]][downloads-url]<% if (config.codeCoverage) { %>
 [![Coverage Status][coveralls-image]][coveralls-url]<% } %>
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
 <%= props.description %>
 
 ## Install
