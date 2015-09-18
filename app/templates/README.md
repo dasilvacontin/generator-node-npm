@@ -34,7 +34,6 @@ Coming soon...
 ## License
 
 <%= props.license %> © [<%= props.authorName %>](<%= props.authorUrl %>)
-* project generated with [maurizzzio/generator-node-npm](https://github.com/maurizzzio/generator-node-npm) *
 
 [travis-image]: https://travis-ci.org/<%= props.username %>/<%= slugname %>.svg?branch=master
 [travis-url]: https://travis-ci.org/<%= props.username %>/<%= slugname %>
