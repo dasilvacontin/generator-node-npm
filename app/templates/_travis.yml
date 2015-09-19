@@ -1,12 +1,8 @@
 language: node_js
-env: CI=true
 sudo: false
 
 node_js:
   - '0.10'
-
-install:
-  - npm install
 
 script:
   - npm run lint<% if (config.codeCoverage) { %>
