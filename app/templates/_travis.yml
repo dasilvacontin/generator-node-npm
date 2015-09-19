@@ -6,8 +6,6 @@ node_js:
   - '0.10'
   - 0.12
   - 4
-
+<% if (config.codeCoverage) { %>
 script:
-  - npm run lint<% if (config.codeCoverage) { %>
-  - npm run istanbul && cat ./coverage/lcov.info | coveralls<% } else { %>
-  - npm test<% } %>
+  - npm run istanbul && cat ./coverage/lcov.info | coveralls<% } %>
