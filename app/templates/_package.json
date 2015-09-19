@@ -39,7 +39,8 @@
     "test:watch": "gaze 'npm test' 'test/**/*.js' 'lib/**/*.js' 'index.js'",
     "start": "npm run test:watch",
 
-    "pretest": "npm run lint"<% if (config.codeCoverage) { %>,
-    "preistanbul": "npm run lint"<% } %>
+    "pretest": "npm run lint",<% if (config.codeCoverage) { %>
+    "preistanbul": "npm run lint",<% } %>
+    "prepublish": "npm run test"
   }
 }
