@@ -3,20 +3,31 @@
   "version": "0.0.0",
   "description": "<%= props.description %>",<% if (props.homepage) { %>
   "homepage": "<%= props.homepage %>",<%}%>
-  "bugs": "<%= repoUrl %>/issues",
-  "license": "<%= props.license %>",
-  "main": "index.js",
   "author": "<%= props.authorName %> <<%= props.authorEmail %>>",
+  "license": "<%= props.license %>",
+  "repository": {
+    "type": "git",
+    "url": "<%= repoUrl %>"
+  },
+  "bugs": "<%= repoUrl %>/issues",<% if (config.cli) { %>
+  "bin": "bin/<%= slugname %>",<% } %>
+  "scripts": {
+    "lint": "standard",
+    "test": "node test/index.js | tap-spec",
+    "test:watch": "gaze 'npm test' 'test/**/*.js' 'lib/**/*.js' 'index.js'",
+    "start": "npm run test:watch",<% if (config.codeCoverage) { %>
+    "istanbul": "istanbul cover test/index.js",<% } %>
+
+    "pretest": "npm run lint",<% if (config.codeCoverage) { %>
+    "preistanbul": "npm run lint",<% } %>
+    "prepublish": "npm run test"
+  },
+  "main": "index.js",
   "files": [
     "index.js",
     "lib",
     "LICENSE"
   ],
-  "repository": {
-    "type": "git",
-    "url": "<%= repoUrl %>"
-  },<% if (config.cli) { %>
-  "bin": "bin/<%= slugname %>",<% } %>
   "keywords": [
     "<%= slugname %>"<% for (var i = 0; i < keywords.length; i += 1) { %>,
     "<%= keywords[i] %>"<% } %>
@@ -31,16 +42,5 @@
     "tap-spec": "^4.0.2",
     "gaze-cli": "^0.2.0",
     "standard": "^4.5.0"
-  },
-  "scripts": {<% if (config.codeCoverage) { %>
-    "istanbul": "istanbul cover test/index.js",<% } %>
-    "lint": "standard",
-    "test": "node test/index.js | tap-spec",
-    "test:watch": "gaze 'npm test' 'test/**/*.js' 'lib/**/*.js' 'index.js'",
-    "start": "npm run test:watch",
-
-    "pretest": "npm run lint",<% if (config.codeCoverage) { %>
-    "preistanbul": "npm run lint",<% } %>
-    "prepublish": "npm run test"
   }
 }
