@@ -59,7 +59,14 @@ module.exports = yeoman.generators.Base.extend({
           var done = this.async();
           npmName(answers.name, function (err, available) {
             if (err) {
-              throw err;
+              if (err.code === 'ENOTFOUND') {
+                console.log('No internet - skipping module name availability'
+                  + ' check.')
+                done(false);
+                return;
+              } else {
+                throw err;
+              }
             }
             if (!available) {
               done(true);
